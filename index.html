@@ -450,6 +450,16 @@ document.getElementById("musicStarter").addEventListener("click", () => {
         }
     }, 200);
 });
+
+
+document.addEventListener('visibilitychange', () => {
+    const audio = document.getElementById('bgMusic');
+    if (document.hidden) {
+        audio.pause();
+    } else {
+        audio.play(); // optional
+    }
+});
 </script>
 
 <script>
