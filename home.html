@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation - A&N</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #d4a373;
+        --secondary: #faf5ee;
+        --dark: #2e2e2e;
+    }
+
+    * {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: var(--secondary);
+        color: var(--dark);
+        overflow-x: hidden;
+    }
+
+    /* HERO SECTION — FIX CROPPING, BIG BACKGROUND */
+    .hero {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+    }
+    /* HERO WITH SLIDESHOW */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Blurred static background */
+.hero-blur-bg {
+    position: absolute;
+    inset: 0;
+    background: url("/home/lucifer/Shreya_Wedding.jpg") center/cover;
+    filter: blur(10px) brightness(0.6);
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+/* Slideshow (foreground) */
+.hero-slideshow {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+
+    /* Default: Desktop / Laptop */
+    background-size: contain;       /* full image visible, no cropping */
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    /* Prevent old slide showing through */
+    background-color: rgba(0, 0, 0, 0.65);
+
+    opacity: 0;
+    animation: slideShow 18s infinite;
+}
+
+/* Mobile / small screens */
+@media (max-width: 768px) {
+    .slide {
+        background-size: cover;      /* fill entire mobile screen */
+        background-position: center center;
+    }
+
+    .hero {
+        height: 100svh;              /* full viewport height for mobile */
+    }
+}
+
+
+/* Slide timing */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 5s; }
+.slide:nth-child(3) { animation-delay: 10s; }
+.slide:nth-child(4) { animation-delay: 15s; }
+.slide:nth-child(5) { animation-delay: 20s; }
+.slide:nth-child(6) { animation-delay: 25s; }
+.slide:nth-child(7) { animation-delay: 30s; }
+.slide:nth-child(8) { animation-delay: 35s; }
+
+/* Fade animation */
+@keyframes slideShow {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    35% { opacity: 1; }
+    45% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+
+    /* Blur background filler */
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("/home/lucifer/Shreya_Wedding.jpg") center/cover no-repeat;
+        filter: blur(18px) brightness(0.6);
+        transform: scale(1.2);
+        z-index: 1;
+    }
+
+    /* Main visible image – keep faces visible */
+    .hero-img {
+        position: absolute;
+        inset: 0;
+        background: url("/home/lucifer/Shreya_Wedding.jpg") top center/contain no-repeat;
+        z-index: 2;
+    }
+
+    .hero-content {
+        position: relative;
+        color: white;
+        z-index: 10;
+        animation: fadeIn 2s ease-in-out;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        margin: 0;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+
+    /* DETAILS SECTION */
+    .details {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .details h2 {
+        font-family: "Playfair Display";
+        font-size: 2.7rem;
+        margin-bottom: 20px;
+    }
+
+    .details .info-box {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-top: 20px;
+        animation: fadeInUp 1.5s ease;
+    }
+
+    .details .info-box p {
+        margin: 8px 0;
+        font-size: 1.1rem;
+    }
+
+    /* Countdown */
+    .countdown {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .countdown h2 {
+        font-family: "Playfair Display";
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .timer {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .time-box {
+        background: white;
+        padding: 18px 22px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        animation: slideUp 1s ease forwards;
+        text-align: center;
+        min-width: 90px;
+    }
+
+    .time-box span {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .time-box small {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    /* Petals */
+    .petal {
+        position: fixed;
+        top: -10vh;
+        font-size: 18px;
+        color: rgba(255, 183, 197, 0.9);
+        animation: fall linear infinite;
+        z-index: 20;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Sparkles */
+    .sparkle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: rgba(255,255,255,0.8);
+        border-radius: 50%;
+        animation: sparkleFloat 4s ease-in-out infinite;
+        z-index: 20;
+        pointer-events: none;
+    }
+
+    @keyframes sparkleFloat {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        50% { transform: translateY(-20px) scale(1.4); opacity: 0.7; }
+        100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    /* Animations */
+    @keyframes fadeIn { 
+        from {opacity:0; transform:translateY(20px);} 
+        to {opacity:1; transform:translateY(0);} 
+    }
+
+    @keyframes fadeInUp { 
+        from {opacity:0; transform:translateY(40px);} 
+        to {opacity:1; transform:translateY(0);} 
+    }
+
+    @keyframes slideUp { 
+        from {opacity:0; transform:translateY(20px);} 
+        to {opacity:1; transform:translateY(0);} 
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2.5rem; }
+    }
+    /* Animated Names */
+.wedding-names {
+    font-family: "Playfair Display", serif;
+    font-size: 4rem;
+    letter-spacing: 3px;
+    margin: 0;
+    opacity: 0;
+    animation: nameFadeIn 2.5s ease forwards, nameGlow 4s ease-in-out infinite alternate;
+}
+
+/* Animated Tagline */
+.wedding-tagline {
+    font-size: 1.4rem;
+    letter-spacing: 6px;
+    margin-top: 15px;
+    opacity: 0;
+    animation: taglineFadeIn 3s ease forwards 1s;
+    text-transform: uppercase;
+}
+
+/* Animated Date */
+.wedding-date {
+    opacity: 0;
+    animation: dateFadeIn 2s ease forwards 2s;
+}
+
+/* Keyframes */
+@keyframes nameFadeIn {
+    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes nameGlow {
+    0% { text-shadow: 0px 0px 8px rgba(255,255,255,0.4); }
+    100% { text-shadow: 0px 0px 15px rgba(255,255,255,0.8); }
+}
+
+@keyframes taglineFadeIn {
+    0% { opacity: 0; transform: translateY(25px); letter-spacing: 20px; }
+    100% { opacity: 1; transform: translateY(0); letter-spacing: 6px; }
+}
+
+@keyframes dateFadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .wedding-names {
+        font-size: 2.8rem;
+        letter-spacing: 2px;
+    }
+    .wedding-tagline {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO SECTION WITH SLIDESHOW -->
+<div class="hero">
+    <!-- Blurred fixed background -->
+    <div class="hero-blur-bg"></div>
+
+    <!-- Slideshow container -->
+    <div class="hero-slideshow">
+        <div class="slide" style="background-image: url('/home/lucifer/1.jpeg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/2.jpeg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/3.jpeg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/4.jpeg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/5.jpeg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/6.jpeg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/7.jpg');"></div>
+        <div class="slide" style="background-image: url('/home/lucifer/8.jpg');"></div>
+    </div>
+
+    <div class="hero-content">
+        <h1 class="wedding-names">Shreya & Dhrumit</h1>
+        <p class="wedding-tagline">We Are Getting Married</p>
+        <p style="font-size:1.1rem; margin-top:15px;" class="wedding-date">23 • November • 2025</p>
+    </div>
+
+</div>
+
+
+<!-- DETAILS SECTION -->
+<div class="details">
+    <h2>Wedding Details</h2>
+
+    <div class="info-box">
+        <p><strong>Date:</strong> 23 November 2025</p>
+        <p><strong>Time:</strong> 7:00 PM Evening</p>
+        <p><strong>Venue:</strong> Ahmedabad</p>
+    </div>
+</div>
+
+<!-- COUNTDOWN SECTION -->
+<div class="countdown">
+    <h2>Countdown Begins</h2>
+    <div class="timer">
+        <div class="time-box"><span id="days">00</span><small> Days</small></div>
+        <div class="time-box"><span id="hours">00</span><small> Hours</small></div>
+        <div class="time-box"><span id="minutes">00</span><small> Minutes</small></div>
+        <div class="time-box"><span id="seconds">00</span><small> Seconds</small></div>
+    </div>
+</div>
+<div id="musicStarter" style="
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    display:flex; justify-content:center; align-items:center;
+    color:white; z-index:9999; font-size:1.5rem; font-family:Poppins;
+    text-align:center; cursor:pointer;
+">
+    Tap to Start the Experience 💗
+</div>
+
+<audio id="bgMusic" src="/media/lucifer/New Volume/Downloads/Lovely-Long-Version-chosic.com_.mp3" loop></audio>
+
+
+<script>
+/* Countdown Timer */
+const weddingDate = new Date("November 23, 2025 19:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+}, 1000);
+
+/* Falling Petals */
+function createPetals() {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.innerHTML = "🌸";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = (4 + Math.random() * 5) + "s";
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 9000);
+}
+setInterval(createPetals, 600);
+
+/* Sparkles */
+function createSparkle() {
+    const sp = document.createElement("div");
+    sp.classList.add("sparkle");
+    sp.style.left = Math.random() * 100 + "vw";
+    sp.style.top = Math.random() * 100 + "vh";
+    sp.style.animationDuration = 3 + Math.random() * 3 + "s";
+    document.body.appendChild(sp);
+    setTimeout(() => sp.remove(), 6000);
+}
+setInterval(createSparkle, 900);
+
+
+const music = document.getElementById("bgMusic");
+let volume = 0;
+
+document.getElementById("musicStarter").addEventListener("click", () => {
+    document.getElementById("musicStarter").style.display = "none";
+    music.volume = 0;
+    music.play();
+
+    let fade = setInterval(() => {
+        if (volume < 0.4) {
+            volume += 0.02;
+            music.volume = volume;
+        } else {
+            clearInterval(fade);
+        }
+    }, 200);
+});
+</script>
+
+<script>
+
+</script>
+
+</body>
+</html>
